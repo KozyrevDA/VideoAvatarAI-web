@@ -1,3 +1,19 @@
+import type { Metadata } from 'next'
+import { OrganizationSchema, SoftwareAppSchema, FAQSchema, HowToSchema } from '@/components/JsonLd'
+
+export const metadata: Metadata = {
+  title: 'Нейросеть Видео — ИИ создаёт говорящий видео-аватар за 30 секунд',
+  description:
+    'Загрузи фото → ИИ создаёт говорящий аватар твоим голосом за 30 секунд. Перевод видео на 40+ языков. Тексты для постов Instagram, TikTok, ВКонтакте. Первые 7 дней — 1 ₽.',
+  alternates: { canonical: 'https://videoavataraii.com' },
+  openGraph: {
+    title: 'Нейросеть Видео — видео-аватар за 30 секунд',
+    description: 'ИИ создаёт говорящий аватар из фото. Клонирование голоса. Перевод на 40+ языков.',
+    url: 'https://videoavataraii.com',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+}
+
 import Link from 'next/link'
 import { ArrowRight, Mic, Globe, PenLine, Lightbulb, CheckCircle, Play } from 'lucide-react'
 
@@ -22,6 +38,11 @@ const faqs = [
 
 export default function Landing() {
   return (
+    <>
+      <OrganizationSchema />
+      <SoftwareAppSchema />
+      <FAQSchema />
+      <HowToSchema />
     <div className="min-h-screen bg-white text-[#18163A]">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-[#E4E2F4] bg-white/90 backdrop-blur-md">
@@ -40,7 +61,7 @@ export default function Landing() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
+      <section aria-label="Главный блок — описание сервиса" className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
         <div className="inline-flex items-center gap-2 bg-[#EAE7FF] text-[#7F6FFF] text-xs font-medium px-3 py-1.5 rounded-full mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-[#7F6FFF] animate-pulse"></span>
           Уже помогли 1 000+ блогерам и малому бизнесу
@@ -133,7 +154,7 @@ export default function Landing() {
       </section>
 
       {/* Features */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+      <section aria-label="Возможности сервиса" className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[#18163A] mb-3">Всё что нужно для контента</h2>
           <p className="text-[#8A87AA]">4 инструмента в одном приложении</p>
@@ -227,5 +248,6 @@ export default function Landing() {
         </div>
       </footer>
     </div>
+    </>
   )
 }
